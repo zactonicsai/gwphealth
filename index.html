@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GWP Health and Wellness - Embrace Natural Living</title>
+    <script src="tailwinds.css"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;700;900&family=Merriweather:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --meadow-green: #4caf50;
+        --forest-green: #2e7d32;
+        --lime-green: #8bc34a;
+        --sunshine-yellow: #ffd54f;
+        --golden-yellow: #ffc107;
+        --soft-cream: #fff9e6;
+        --deep-forest: #1b5e20;
+      }
+
+      body {
+        font-family: "Merriweather", serif;
+        background: linear-gradient(135deg, #fff9e6 0%, #e8f5e9 100%);
+        color: #1b5e20;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      .heading-font {
+        font-family: "Darker Grotesque", sans-serif;
+        font-weight: 700;
+      }
+
+      /* Animated background elements */
+      .bg-decoration {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .floating-circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .circle-1 {
+        width: 300px;
+        height: 300px;
+        background: var(--meadow-green);
+        top: 10%;
+        right: -50px;
+        animation-delay: 0s;
+      }
+
+      .circle-2 {
+        width: 200px;
+        height: 200px;
+        background: var(--sunshine-yellow);
+        bottom: 20%;
+        left: -50px;
+        animation-delay: 5s;
+      }
+
+      .circle-3 {
+        width: 250px;
+        height: 250px;
+        background: var(--lime-green);
+        top: 50%;
+        right: 10%;
+        animation-delay: 10s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -30px) scale(1.1);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.9);
+        }
+      }
+
+      /* Navigation */
+      nav {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 249, 230, 0.95);
+        border-bottom: 3px solid var(--meadow-green);
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.15);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--meadow-green),
+          var(--golden-yellow)
+        );
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          rgba(76, 175, 80, 0.2) 0%,
+          rgba(255, 213, 79, 0.2) 50%,
+          rgba(139, 195, 74, 0.2) 100%
+        );
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 8vw, 7rem);
+        font-weight: 900;
+        line-height: 1;
+        background: linear-gradient(
+          135deg,
+          var(--forest-green) 0%,
+          var(--meadow-green) 50%,
+          var(--golden-yellow) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Section Cards */
+      .section-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 2px solid transparent;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 213, 79, 0.3),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .section-card:hover::before {
+        left: 100%;
+      }
+
+      .section-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(46, 125, 50, 0.2);
+        border-color: var(--meadow-green);
+      }
+
+      .section-icon {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2.5rem;
+        transition: all 0.4s ease;
+      }
+
+      .section-card:hover .section-icon {
+        transform: rotate(360deg) scale(1.1);
+      }
+
+      /* Custom Button */
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--meadow-green) 0%,
+          var(--lime-green) 100%
+        );
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+      }
+
+      /* Scroll Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Leaf decoration */
+      .leaf-decoration {
+        position: absolute;
+        opacity: 0.15;
+        animation: leafFloat 15s infinite ease-in-out;
+      }
+
+      @keyframes leafFloat {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(20px, -20px) rotate(90deg);
+        }
+        50% {
+          transform: translate(0, -40px) rotate(180deg);
+        }
+        75% {
+          transform: translate(-20px, -20px) rotate(270deg);
+        }
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--soft-cream);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          180deg,
+          var(--meadow-green),
+          var(--golden-yellow)
+        );
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          180deg,
+          var(--forest-green),
+          var(--meadow-green)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+      <div class="floating-circle circle-1"></div>
+      <div class="floating-circle circle-2"></div>
+      <div class="floating-circle circle-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <div
+          class="heading-font text-3xl font-black"
+          style="color: var(--forest-green)"
+        >
+          GWP <span style="color: var(--golden-yellow)">Wellness</span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="nav-link heading-font text-xl font-semibold"
+            style="color: var(--deep-forest)"
+            >Home</a
+          >
+          <a
+            href="#eating"
+            class="nav-link heading-font text-xl font-semibold"
+            style="color: var(--deep-forest)"
+            >Eating</a
+          >
+          <a
+            href="#sleeping"
+            class="nav-link heading-font text-xl font-semibold"
+            style="color: var(--deep-forest)"
+            >Sleeping</a
+          >
+          <a
+            href="#exercising"
+            class="nav-link heading-font text-xl font-semibold"
+            style="color: var(--deep-forest)"
+            >Exercising</a
+          >
+          <a
+            href="#mental"
+            class="nav-link heading-font text-xl font-semibold"
+            style="color: var(--deep-forest)"
+            >Mental Health</a
+          >
+        </div>
+        <button
+          id="mobile-menu"
+          class="md:hidden text-3xl"
+          style="color: var(--forest-green)"
+        >
+          ☰
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-nav"
+        class="hidden md:hidden px-6 py-4 border-t-2"
+        style="
+          border-color: var(--meadow-green);
+          background: rgba(255, 249, 230, 0.98);
+        "
+      >
+        <a
+          href="#home"
+          class="block py-2 heading-font text-xl font-semibold"
+          style="color: var(--deep-forest)"
+          >Home</a
+        >
+        <a
+          href="#eating"
+          class="block py-2 heading-font text-xl font-semibold"
+          style="color: var(--deep-forest)"
+          >Eating</a
+        >
+        <a
+          href="#sleeping"
+          class="block py-2 heading-font text-xl font-semibold"
+          style="color: var(--deep-forest)"
+          >Sleeping</a
+        >
+        <a
+          href="#exercising"
+          class="block py-2 heading-font text-xl font-semibold"
+          style="color: var(--deep-forest)"
+          >Exercising</a
+        >
+        <a
+          href="#mental"
+          class="block py-2 heading-font text-xl font-semibold"
+          style="color: var(--deep-forest)"
+          >Mental Health</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-gradient min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden"
+    >
+      <div class="leaf-decoration text-9xl" style="top: 10%; left: 5%">🍃</div>
+      <div
+        class="leaf-decoration text-7xl"
+        style="bottom: 20%; right: 10%; animation-delay: 5s"
+      >
+        🌿
+      </div>
+      <div class="max-w-6xl mx-auto text-center relative z-10">
+        <h1 class="hero-title mb-6">Bloom Into Your<br />Best Self</h1>
+        <p
+          class="text-2xl md:text-3xl mb-12 font-light"
+          style="
+            color: var(--forest-green);
+            animation: fadeInUp 1s ease-out 0.3s both;
+          "
+        >
+          Nurture your body, mind, and spirit with GWP Health and Wellness
+        </p>
+        <p>
+          1 Corinthians 6:19–20 - “Your body is the temple of the Holy Spirit…
+          therefore glorify God in your body.”
+        </p>
+        <hr />
+        <br/>
+        <a
+          href="#eating"
+          class="btn-primary"
+          style="animation: fadeInUp 1s ease-out 0.6s both"
+        >
+          Start Your Journey
+        </a>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <!-- Eating Section -->
+      <section id="eating" class="mb-32 fade-in">
+        <div class="section-card rounded-3xl p-10 md:p-16">
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div
+              class="section-icon"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--lime-green),
+                  var(--sunshine-yellow)
+                );
+                flex-shrink: 0;
+              "
+            >
+              🥗
+            </div>
+            <div>
+              <h2
+                class="text-5xl md:text-6xl font-black mb-6"
+                style="color: var(--forest-green)"
+              >
+                Nourish to Flourish
+              </h2>
+              <p
+                class="text-xl md:text-2xl leading-relaxed mb-6"
+                style="color: var(--deep-forest)"
+              >
+                Eating well isn't about restriction—it's about abundance. Fill
+                your plate with vibrant, whole foods that energize your body and
+                delight your senses. Think colorful vegetables, fresh fruits,
+                wholesome grains, and proteins that power your day.
+              </p>
+              <div class="grid grid-cols-2 gap-4 mt-8">
+                <div
+                  class="bg-gradient-to-br from-green-50 to-yellow-50 p-6 rounded-2xl border-2 border-green-200"
+                >
+                  <h3
+                    class="heading-font text-2xl font-bold mb-2"
+                    style="color: var(--forest-green)"
+                  >
+                    Fresh & Seasonal
+                  </h3>
+                  <p style="color: var(--deep-forest)">
+                    Eat with the seasons for maximum nutrition
+                  </p>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-yellow-50 to-green-50 p-6 rounded-2xl border-2 border-yellow-200"
+                >
+                  <h3
+                    class="heading-font text-2xl font-bold mb-2"
+                    style="color: var(--forest-green)"
+                  >
+                    Mindful Meals
+                  </h3>
+                  <p style="color: var(--deep-forest)">
+                    Savor every bite with gratitude
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recipe of the Month -->
+          <div
+            class="mt-12 bg-gradient-to-br from-yellow-50 to-green-50 rounded-3xl p-8 border-3 border-yellow-200 overflow-hidden relative"
+          >
+            <div class="absolute top-0 right-0 text-9xl opacity-10">🍽️</div>
+            <div
+              class="flex flex-col md:flex-row gap-8 items-center relative z-10"
+            >
+              <div class="w-full md:w-1/2">
+                <img
+                  src="/recipes/OIP.jpg"
+                  alt="Homemade Hummus"
+                  class="w-full h-80 object-cover rounded-2xl shadow-xl border-4 border-white"
+                />
+              </div>
+              <div class="w-full md:w-1/2">
+                <div
+                  class="inline-block px-4 py-2 rounded-full mb-4"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      var(--sunshine-yellow),
+                      var(--golden-yellow)
+                    );
+                    color: var(--deep-forest);
+                  "
+                >
+                  <span class="heading-font font-bold text-lg"
+                    >⭐ Recipe of the Month</span
+                  >
+                </div>
+                <h3
+                  class="heading-font text-4xl font-black mb-4"
+                  style="color: var(--forest-green)"
+                >
+                  Homemade Hummus
+                </h3>
+                <p
+                  class="text-lg leading-relaxed mb-6"
+                  style="color: var(--deep-forest)"
+                >
+                  Creamy, delicious, and incredibly nutritious! This classic
+                  Middle Eastern dip is made with chickpeas, tahini, fresh lemon
+                  juice, garlic, and olive oil. Perfect for snacking with fresh
+                  veggies or pita bread. Rich in protein, fiber, and healthy
+                  fats—it's a wellness staple!
+                </p>
+                <a href="recipes/hummas.html" class="btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sleeping Section -->
+      <section id="sleeping" class="mb-32 fade-in">
+        <div class="section-card rounded-3xl p-10 md:p-16">
+          <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <div
+              class="section-icon"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--meadow-green),
+                  var(--sunshine-yellow)
+                );
+                flex-shrink: 0;
+              "
+            >
+              🌙
+            </div>
+            <div>
+              <h2
+                class="text-5xl md:text-6xl font-black mb-6"
+                style="color: var(--forest-green)"
+              >
+                Rest & Rejuvenate
+              </h2>
+              <p
+                class="text-xl md:text-2xl leading-relaxed mb-6"
+                style="color: var(--deep-forest)"
+              >
+                Quality sleep is your body's natural reset button. Create a
+                peaceful sanctuary where you can drift into restorative rest.
+                Aim for 7-9 hours of sleep each night to wake up refreshed and
+                ready to embrace the day.
+              </p>
+            
+                          <!-- Sleep Better Tips -->
+                <div class="mt-12 bg-gradient-to-br from-blue-50 to-green-50 rounded-3xl p-8 border-3 border-blue-200 overflow-hidden relative">
+                    <div class="absolute top-0 right-0 text-9xl opacity-10">💤</div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-8">
+                            <div class="inline-block px-4 py-2 rounded-full mb-4" style="background: linear-gradient(135deg, #93C5FD, var(--meadow-green)); color: white;">
+                                <span class="heading-font font-bold text-lg">💤 Sleep Better Tonight</span>
+                            </div>
+                            <h3 class="heading-font text-4xl font-black mb-3" style="color: var(--forest-green);">
+                                Your Guide to Restful Sleep
+                            </h3>
+                            <p class="text-xl" style="color: var(--deep-forest);">
+                                Simple habits that make a big difference in your sleep quality
+                            </p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">🌅</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Consistent Schedule</h4>
+                                        <p style="color: var(--deep-forest);">Go to bed and wake up at the same time every day, even on weekends</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">📱</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Digital Sunset</h4>
+                                        <p style="color: var(--deep-forest);">Power down screens 1 hour before bed to reduce blue light exposure</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">🌡️</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Cool & Dark Room</h4>
+                                        <p style="color: var(--deep-forest);">Keep your bedroom between 60-67°F with blackout curtains or eye mask</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">🛁</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Relaxing Ritual</h4>
+                                        <p style="color: var(--deep-forest);">Create a calming bedtime routine: warm bath, gentle stretching, or reading</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">☕</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Caffeine Cutoff</h4>
+                                        <p style="color: var(--deep-forest);">Avoid caffeine after 2 PM - it stays in your system for 6+ hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">🧘‍♀️</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Mind Calming</h4>
+                                        <p style="color: var(--deep-forest);">Practice meditation, deep breathing, or journaling to quiet racing thoughts</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">🏃‍♂️</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Morning Movement</h4>
+                                        <p style="color: var(--deep-forest);">Exercise early in the day helps regulate your sleep-wake cycle</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 p-5 rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-3xl">🍽️</div>
+                                    <div>
+                                        <h4 class="heading-font text-xl font-bold mb-2" style="color: var(--forest-green);">Light Evening Meals</h4>
+                                        <p style="color: var(--deep-forest);">Finish dinner 2-3 hours before bed to avoid digestive discomfort</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+      </section>
+
+      <!-- Exercising Section -->
+      <section id="exercising" class="mb-32 fade-in">
+        <div class="section-card rounded-3xl p-10 md:p-16">
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div
+              class="section-icon"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--sunshine-yellow),
+                  var(--lime-green)
+                );
+                flex-shrink: 0;
+              "
+            >
+              💪
+            </div>
+            <div>
+              <h2
+                class="text-5xl md:text-6xl font-black mb-6"
+                style="color: var(--forest-green)"
+              >
+                Move with Joy
+              </h2>
+              <p
+                class="text-xl md:text-2xl leading-relaxed mb-6"
+                style="color: var(--deep-forest)"
+              >
+                Movement is medicine for the body and soul. Find activities that
+                make you smile—whether it's dancing in your living room, hiking
+                through nature, or practicing yoga at sunrise. The best exercise
+                is the one you'll actually do.
+              </p>
+              <div class="grid grid-cols-2 gap-4 mt-8">
+                <div
+                  class="bg-gradient-to-br from-yellow-50 to-green-50 p-6 rounded-2xl border-2 border-yellow-200"
+                >
+                  <h3
+                    class="heading-font text-2xl font-bold mb-2"
+                    style="color: var(--forest-green)"
+                  >
+                    Daily Movement
+                  </h3>
+                  <p style="color: var(--deep-forest)">
+                    30 minutes of activity daily
+                  </p>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-green-50 to-yellow-50 p-6 rounded-2xl border-2 border-green-200"
+                >
+                  <h3
+                    class="heading-font text-2xl font-bold mb-2"
+                    style="color: var(--forest-green)"
+                  >
+                    Nature Walks
+                  </h3>
+                  <p style="color: var(--deep-forest)">
+                    Connect with the outdoors
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mental Health Section -->
+      <section id="mental" class="mb-32 fade-in">
+        <div class="section-card rounded-3xl p-10 md:p-16">
+          <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <div
+              class="section-icon"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--golden-yellow),
+                  var(--meadow-green)
+                );
+                flex-shrink: 0;
+              "
+            >
+              🧘
+            </div>
+            <div>
+              <h2
+                class="text-5xl md:text-6xl font-black mb-6"
+                style="color: var(--forest-green)"
+              >
+                Cultivate Peace
+              </h2>
+              <p
+                class="text-xl md:text-2xl leading-relaxed mb-6"
+                style="color: var(--deep-forest)"
+              >
+                Your mental wellness is just as important as your physical
+                health. Practice mindfulness, nurture meaningful connections,
+                and give yourself permission to rest. Remember: it's okay not to
+                be okay, and seeking support is a sign of strength.
+              </p>
+              <div class="grid grid-cols-2 gap-4 mt-8">
+                <div
+                  class="bg-gradient-to-br from-green-50 to-purple-50 p-6 rounded-2xl border-2 border-green-200"
+                >
+                  <h3
+                    class="heading-font text-2xl font-bold mb-2"
+                    style="color: var(--forest-green)"
+                  >
+                    Meditation
+                  </h3>
+                  <p style="color: var(--deep-forest)">
+                    10 minutes of calm daily
+                  </p>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-purple-50 to-green-50 p-6 rounded-2xl border-2 border-purple-200"
+                >
+                  <h3
+                    class="heading-font text-2xl font-bold mb-2"
+                    style="color: var(--forest-green)"
+                  >
+                    Gratitude
+                  </h3>
+                  <p style="color: var(--deep-forest)">
+                    Journal your blessings
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="text-center py-20 fade-in">
+        <h2
+          class="text-5xl md:text-6xl font-black mb-8"
+          style="color: var(--forest-green)"
+        >
+          Ready to Transform Your Life?
+        </h2>
+        <p class="text-2xl mb-12" style="color: var(--deep-forest)">
+          Join our community and start your wellness journey today
+        </p>
+        <button class="btn-primary">Get Started Now</button>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="py-12 text-center"
+      style="
+        background: linear-gradient(
+          135deg,
+          var(--forest-green),
+          var(--meadow-green)
+        );
+        color: white;
+      "
+    >
+      <div class="heading-font text-3xl font-black mb-4">GWP Wellness</div>
+      <p class="text-lg mb-6">Growing Wellness, Naturally</p>
+      <p class="text-sm opacity-75">
+        &copy; 2026 GWP Health and Wellness. All rights reserved.
+      </p>
+    </footer>
+
+    <script>
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Close mobile menu if open
+            document.getElementById("mobile-nav").classList.add("hidden");
+          }
+        });
+      });
+
+      // Mobile menu toggle
+      document.getElementById("mobile-menu").addEventListener("click", () => {
+        const mobileNav = document.getElementById("mobile-nav");
+        mobileNav.classList.toggle("hidden");
+      });
+
+      // Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Add parallax effect to floating circles
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const circles = document.querySelectorAll(".floating-circle");
+        circles.forEach((circle, index) => {
+          const speed = 0.5 + index * 0.2;
+          circle.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+
+      // Add interactive hover effects
+      document.querySelectorAll(".section-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+      });
+    </script>
+  </body>
+</html>

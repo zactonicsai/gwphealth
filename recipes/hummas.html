@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Hummus Recipe - GWP Health and Wellness</title>
+    <script src="/tailwinds.css"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;700;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --meadow-green: #4CAF50;
+            --forest-green: #2E7D32;
+            --lime-green: #8BC34A;
+            --sunshine-yellow: #FFD54F;
+            --golden-yellow: #FFC107;
+            --soft-cream: #FFF9E6;
+            --deep-forest: #1B5E20;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: linear-gradient(135deg, #FFF9E6 0%, #E8F5E9 100%);
+            color: #1B5E20;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .heading-font {
+            font-family: 'Darker Grotesque', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Animated background elements */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--meadow-green);
+            top: 10%;
+            right: -50px;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--sunshine-yellow);
+            bottom: 20%;
+            left: -50px;
+            animation-delay: 5s;
+        }
+
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--lime-green);
+            top: 50%;
+            right: 10%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Navigation */
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 249, 230, 0.95);
+            border-bottom: 3px solid var(--meadow-green);
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.15);
+        }
+
+        /* Recipe Card */
+        .recipe-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--meadow-green);
+            transition: all 0.3s ease;
+        }
+
+        .ingredient-item {
+            background: linear-gradient(135deg, rgba(255, 213, 79, 0.1), rgba(139, 195, 74, 0.1));
+            border-left: 4px solid var(--meadow-green);
+            transition: all 0.3s ease;
+        }
+
+        .ingredient-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, rgba(255, 213, 79, 0.2), rgba(139, 195, 74, 0.2));
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--meadow-green), var(--lime-green));
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: var(--sunshine-yellow);
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--meadow-green) 0%, var(--lime-green) 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Darker Grotesque', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(139, 195, 74, 0.1));
+            border-left: 5px solid var(--golden-yellow);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--soft-cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--meadow-green), var(--golden-yellow));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--forest-green), var(--meadow-green));
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-circle circle-1"></div>
+        <div class="floating-circle circle-2"></div>
+        <div class="floating-circle circle-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="gwp-wellness.html" class="heading-font text-3xl font-black" style="color: var(--forest-green); text-decoration: none;">
+                GWP <span style="color: var(--golden-yellow);">Wellness</span>
+            </a>
+            <a href="/" class="btn-primary" style="padding: 0.75rem 2rem; font-size: 1rem;">
+                ← Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Recipe Content -->
+    <div class="max-w-5xl mx-auto px-6 py-12">
+        
+        <!-- Header -->
+        <div class="text-center mb-12 fade-in">
+            <div class="inline-block px-6 py-3 rounded-full mb-6" style="background: linear-gradient(135deg, var(--sunshine-yellow), var(--golden-yellow)); color: var(--deep-forest);">
+                <span class="heading-font font-bold text-xl">⭐ Recipe of the Month</span>
+            </div>
+            <h1 class="text-6xl md:text-7xl font-black mb-4" style="color: var(--forest-green);">
+                Homemade Hummus
+            </h1>
+            <p class="text-2xl" style="color: var(--deep-forest);">
+                Creamy, delicious, and incredibly nutritious!
+            </p>
+        </div>
+
+        <!-- Recipe Image -->
+        <div class="mb-12 fade-in">
+            <img src="OIP.jpg"
+                 class="w-full h-96 object-cover rounded-3xl shadow-2xl border-4 border-white">
+        </div>
+
+        <!-- Recipe Info -->
+        <div class="grid grid-cols-3 gap-6 mb-12 fade-in">
+            <div class="recipe-card rounded-2xl p-6 text-center">
+                <div class="text-4xl mb-2">⏱️</div>
+                <div class="heading-font text-xl font-bold mb-1" style="color: var(--forest-green);">Prep Time</div>
+                <div style="color: var(--deep-forest);">10 minutes</div>
+            </div>
+            <div class="recipe-card rounded-2xl p-6 text-center">
+                <div class="text-4xl mb-2">👥</div>
+                <div class="heading-font text-xl font-bold mb-1" style="color: var(--forest-green);">Servings</div>
+                <div style="color: var(--deep-forest);">8-10 servings</div>
+            </div>
+            <div class="recipe-card rounded-2xl p-6 text-center">
+                <div class="text-4xl mb-2">📊</div>
+                <div class="heading-font text-xl font-bold mb-1" style="color: var(--forest-green);">Difficulty</div>
+                <div style="color: var(--deep-forest);">Easy</div>
+            </div>
+        </div>
+
+        <!-- Ingredients -->
+        <div class="recipe-card rounded-3xl p-10 mb-12 fade-in">
+            <h2 class="text-4xl font-black mb-6 flex items-center" style="color: var(--forest-green);">
+                <span class="text-5xl mr-4">🥫</span> Ingredients
+            </h2>
+            <ul class="space-y-4">
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">1 can (15 oz)</span> chickpeas, drained and rinsed
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">¼ cup</span> tahini (sesame seed paste)
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">3 tablespoons</span> fresh lemon juice
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">2 cloves</span> garlic, minced
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">2 tablespoons</span> extra virgin olive oil (plus more for drizzling)
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">½ teaspoon</span> ground cumin
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">2-3 tablespoons</span> cold water (as needed for consistency)
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">Salt</span> to taste
+                </li>
+                <li class="ingredient-item p-4 rounded-xl">
+                    <span class="font-semibold" style="color: var(--forest-green);">Optional toppings:</span> paprika, fresh parsley, pine nuts, additional olive oil
+                </li>
+            </ul>
+        </div>
+
+        <!-- Instructions -->
+        <div class="recipe-card rounded-3xl p-10 mb-12 fade-in">
+            <h2 class="text-4xl font-black mb-8 flex items-center" style="color: var(--forest-green);">
+                <span class="text-5xl mr-4">👨‍🍳</span> Instructions
+            </h2>
+            
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="step-card rounded-2xl p-6 flex gap-6">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-2" style="color: var(--forest-green);">Prepare the Chickpeas</h3>
+                        <p class="text-lg leading-relaxed" style="color: var(--deep-forest);">
+                            Drain and rinse the canned chickpeas thoroughly under cold water. For extra smooth hummus, you can optionally peel the chickpeas by gently rubbing them between your fingers to remove the skins (this step is optional but creates an ultra-creamy texture).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card rounded-2xl p-6 flex gap-6">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-2" style="color: var(--forest-green);">Blend the Tahini and Lemon</h3>
+                        <p class="text-lg leading-relaxed" style="color: var(--deep-forest);">
+                            In a food processor or high-speed blender, combine the tahini and lemon juice. Blend for about 1 minute until the mixture becomes light and creamy. This step helps emulsify the tahini and creates a smoother base.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card rounded-2xl p-6 flex gap-6">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-2" style="color: var(--forest-green);">Add Garlic and Seasonings</h3>
+                        <p class="text-lg leading-relaxed" style="color: var(--deep-forest);">
+                            Add the minced garlic, cumin, and a pinch of salt to the tahini-lemon mixture. Blend for another 30 seconds to combine all the flavors evenly.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-card rounded-2xl p-6 flex gap-6">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-2" style="color: var(--forest-green);">Add Chickpeas and Olive Oil</h3>
+                        <p class="text-lg leading-relaxed" style="color: var(--deep-forest);">
+                            Add half of the chickpeas to the food processor and blend for 1 minute. Scrape down the sides, then add the remaining chickpeas and the olive oil. Blend for another 1-2 minutes until smooth and creamy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="step-card rounded-2xl p-6 flex gap-6">
+                    <div class="step-number">5</div>
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-2" style="color: var(--forest-green);">Adjust Consistency</h3>
+                        <p class="text-lg leading-relaxed" style="color: var(--deep-forest);">
+                            With the processor running, slowly drizzle in 2-3 tablespoons of cold water, one tablespoon at a time, until you reach your desired consistency. The hummus should be smooth, creamy, and easily spreadable.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="step-card rounded-2xl p-6 flex gap-6">
+                    <div class="step-number">6</div>
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-2" style="color: var(--forest-green);">Taste and Adjust</h3>
+                        <p class="text-lg leading-relaxed" style="color: var(--deep-forest);">
+                            Taste your hummus and adjust seasonings as needed. Add more salt, lemon juice, or garlic according to your preference. Blend briefly after any additions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="step-card rounded-2xl p-6 flex gap-6">
+                    <div class="step-number">7</div>
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-2" style="color: var(--forest-green);">Serve and Garnish</h3>
+                        <p class="text-lg leading-relaxed" style="color: var(--deep-forest);">
+                            Transfer the hummus to a serving bowl. Use the back of a spoon to create a shallow well in the center. Drizzle with extra virgin olive oil, and sprinkle with paprika, fresh parsley, or pine nuts if desired. Serve with fresh vegetables, pita bread, or crackers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="tip-box rounded-3xl p-10 mb-12 fade-in">
+            <h2 class="text-4xl font-black mb-6 flex items-center" style="color: var(--forest-green);">
+                <span class="text-5xl mr-4">💡</span> Pro Tips
+            </h2>
+            <ul class="space-y-4 text-lg" style="color: var(--deep-forest);">
+                <li class="flex items-start">
+                    <span class="text-2xl mr-3">✨</span>
+                    <span><strong>For Ultra-Smooth Hummus:</strong> Peel the chickpeas before blending. It takes a few extra minutes but makes a huge difference in texture!</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-2xl mr-3">🧊</span>
+                    <span><strong>Use Cold Water:</strong> Cold water helps create a lighter, fluffier texture.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-2xl mr-3">🍋</span>
+                    <span><strong>Fresh is Best:</strong> Always use fresh lemon juice, not bottled, for the brightest flavor.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-2xl mr-3">❄️</span>
+                    <span><strong>Storage:</strong> Store in an airtight container in the refrigerator for up to 5 days. Drizzle with olive oil on top to keep it fresh.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-2xl mr-3">🎨</span>
+                    <span><strong>Get Creative:</strong> Add roasted red peppers, roasted garlic, or fresh herbs like cilantro or basil for delicious variations!</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Nutrition -->
+        <div class="recipe-card rounded-3xl p-10 mb-12 fade-in">
+            <h2 class="text-4xl font-black mb-6 flex items-center" style="color: var(--forest-green);">
+                <span class="text-5xl mr-4">🥗</span> Health Benefits
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(255, 213, 79, 0.1));">
+                    <h3 class="heading-font text-2xl font-bold mb-3" style="color: var(--forest-green);">Rich in Protein & Fiber</h3>
+                    <p style="color: var(--deep-forest);">Chickpeas are packed with plant-based protein and fiber, helping you feel full and satisfied while supporting digestive health.</p>
+                </div>
+                <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, rgba(255, 213, 79, 0.1), rgba(139, 195, 74, 0.1));">
+                    <h3 class="heading-font text-2xl font-bold mb-3" style="color: var(--forest-green);">Heart-Healthy Fats</h3>
+                    <p style="color: var(--deep-forest);">Olive oil and tahini provide healthy monounsaturated fats that support cardiovascular health and reduce inflammation.</p>
+                </div>
+                <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(255, 213, 79, 0.1));">
+                    <h3 class="heading-font text-2xl font-bold mb-3" style="color: var(--forest-green);">Nutrient Dense</h3>
+                    <p style="color: var(--deep-forest);">Loaded with vitamins and minerals including folate, iron, phosphorus, and B vitamins essential for energy production.</p>
+                </div>
+                <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, rgba(255, 213, 79, 0.1), rgba(139, 195, 74, 0.1));">
+                    <h3 class="heading-font text-2xl font-bold mb-3" style="color: var(--forest-green);">Blood Sugar Friendly</h3>
+                    <p style="color: var(--deep-forest);">The combination of protein and fiber helps maintain steady blood sugar levels, preventing energy crashes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center fade-in">
+            <a href="/" class="btn-primary">
+                ← Back to GWP Wellness
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-20 py-12 text-center" style="background: linear-gradient(135deg, var(--forest-green), var(--meadow-green)); color: white;">
+        <div class="heading-font text-3xl font-black mb-4">GWP Wellness</div>
+        <p class="text-lg mb-6">Growing Wellness, Naturally</p>
+        <p class="text-sm opacity-75">&copy; 2026 GWP Health and Wellness. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to floating circles
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const circles = document.querySelectorAll('.floating-circle');
+            circles.forEach((circle, index) => {
+                const speed = 0.5 + (index * 0.2);
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
